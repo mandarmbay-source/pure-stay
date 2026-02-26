@@ -1,0 +1,193 @@
+:root {
+    --primary: #4f8cf0;
+    --primary-soft: rgba(79, 140, 240, 0.1);
+    --success: #2ecc71;
+    --success-bg: #dcfce7;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --glass: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    background: var(--bg-gradient);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Container Utama - Dibuat agar tidak terlalu lebar */
+.dashboard-container {
+    width: 100%;
+    max-width: 900px; /* Lebar dikontrol agar lebih proporsional */
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header Section */
+h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-back-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.btn-back-link:hover {
+    gap: 8px; /* Efek gerak sedikit saat hover */
+}
+
+/* Card Modern */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+/* Tabel Modern */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th {
+    text-align: left;
+    padding: 15px 20px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+tr:hover td {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Badge ID */
+.id-text {
+    font-family: 'Monospace', sans-serif;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Badge Status Gratis */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.status-yes {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.status-no {
+    background: #f1f5f9;
+    color: var(--text-muted);
+}
+
+/* Harga Styling */
+.price-bold {
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .glass-card {
+        padding: 15px;
+        border-radius: 16px;
+    }
+    td, th {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Tambahkan ini ke riwayat_air.css kamu */
+
+.month-group {
+    margin-bottom: 40px; /* Jarak antar bulan */
+}
+
+.month-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    background: var(--primary-soft);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Biar kartu terlihat lebih terpisah */
+.glass-card {
+    margin-bottom: 10px;
+}
+
+.status-lunas { 
+    background: #dcfce7; 
+    color: #15803d; 
+    padding: 5px 10px; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    font-size: 0.75rem; 
+}
+
+.status-pending { 
+    background: #fee2e2; 
+    color: #ef4444; 
+    padding: 5px 10px; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    font-size: 0.75rem; 
+}

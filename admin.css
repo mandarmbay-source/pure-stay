@@ -1,0 +1,224 @@
+:root {
+    --primary-blue: #4f8cf0;
+    --primary-dark: #3a6fc4;
+    --accent-green: #2ecc71;
+    --soft-blue: #f0f6ff;
+    --bg-main: #f8fbff;
+    --glass-card: rgba(255, 255, 255, 0.8);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(79, 140, 240, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(46, 204, 113, 0.1) 0px, transparent 50%);
+}
+
+/* --- TOP NAVIGATION --- */
+.top-nav {
+    padding: 30px 5%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-logout {
+    padding: 12px 24px;
+    background: white;
+    color: #ef4444;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 14px;
+    border: 1px solid #fee2e2;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.1);
+}
+
+.btn-logout:hover {
+    background: #ef4444;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* --- CONTAINER --- */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5% 50px;
+}
+
+.welcome-text {
+    margin-bottom: 50px;
+}
+
+.welcome-text h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 10px;
+}
+
+.welcome-text h2::after {
+    content: '.';
+    color: var(--primary-blue);
+}
+
+/* --- GRID SYSTEM --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* --- GLASS CARD EFFECT --- */
+.glass-card {
+    background: var(--glass-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 35px;
+    padding: 40px !important; /* Memastikan padding cukup lega */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(79, 140, 240, 0.12);
+    border-color: var(--primary-blue);
+}
+
+/* --- STATS STYLING --- */
+.stat-number {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 15px 0 5px;
+    letter-spacing: -2px;
+}
+
+/* --- BUTTONS --- */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-modern {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    padding: 20px !important;
+    border-radius: 18px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.btn-modern:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+}
+
+.btn-outline {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 18px;
+    border-radius: 18px;
+    border: 2px solid #e2e8f0;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: var(--soft-blue);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+/* Emoji/Icon Container */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .welcome-text h2 { font-size: 2rem; }
+    .glass-card { padding: 30px !important; }
+}
+
+
+/* untuk admin air */
+:root {
+    --primary: #4f8cf0; /* Warna biru utama */
+    --primary-light: rgba(79, 140, 240, 0.1);
+    --text-muted: #64748b;
+    --glass: rgba(255, 255, 255, 0.7);
+}
+
+/* Tombol Kembali */
+.btn-back-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px; /* Jarak awal antara panah dan teks */
+    margin-bottom: 15px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: var(--primary-light); /* Background tipis agar terlihat seperti tombol */
+}
+
+.btn-back-link:hover {
+    gap: 10px; /* Efek panah menjauh sedikit saat hover */
+    background: var(--primary); /* Berubah warna solid saat hover */
+    color: white;
+    transform: translateX(-5px); /* Bergerak ke kiri sedikit */
+}
+
+/* Header Section */
+h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Card Modern Glassmorphism */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Dukungan Safari */
+    border-radius: 24px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
