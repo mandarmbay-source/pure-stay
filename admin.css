@@ -1,3 +1,4 @@
+/* --- VARIABLES --- */
 :root {
     --primary-blue: #4f8cf0;
     --primary-dark: #3a6fc4;
@@ -7,8 +8,10 @@
     --glass-card: rgba(255, 255, 255, 0.8);
     --text-main: #0f172a;
     --text-muted: #64748b;
+    --primary-light: rgba(79, 140, 240, 0.1);
 }
 
+/* --- RESET & BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +23,7 @@ body {
     background: var(--bg-main);
     color: var(--text-main);
     min-height: 100vh;
+    overflow-x: hidden; /* Mencegah scroll horizontal */
     background-image: 
         radial-gradient(at 0% 0%, rgba(79, 140, 240, 0.1) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(46, 204, 113, 0.1) 0px, transparent 50%);
@@ -27,19 +31,19 @@ body {
 
 /* --- TOP NAVIGATION --- */
 .top-nav {
-    padding: 30px 5%;
+    padding: 20px 5%;
     display: flex;
     justify-content: flex-end;
 }
 
 .btn-logout {
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: white;
     color: #ef4444;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.8rem;
-    border-radius: 14px;
+    font-size: 0.75rem;
+    border-radius: 12px;
     border: 1px solid #fee2e2;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(239, 68, 68, 0.1);
@@ -59,11 +63,11 @@ body {
 }
 
 .welcome-text {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .welcome-text h2 {
-    font-size: 2.8rem;
+    font-size: clamp(1.8rem, 5vw, 2.8rem); /* Ukuran font fleksibel */
     font-weight: 800;
     letter-spacing: -1.5px;
     margin-bottom: 10px;
@@ -77,8 +81,9 @@ body {
 /* --- GRID SYSTEM --- */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    /* Grid otomatis menyesuaikan jumlah kolom berdasarkan lebar layar */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 25px;
 }
 
 /* --- GLASS CARD EFFECT --- */
@@ -87,24 +92,27 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 35px;
-    padding: 40px !important; /* Memastikan padding cukup lega */
+    border-radius: 30px;
+    padding: 30px !important; 
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .glass-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     box-shadow: 0 30px 60px rgba(79, 140, 240, 0.12);
     border-color: var(--primary-blue);
 }
 
 /* --- STATS STYLING --- */
 .stat-number {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 800;
     color: var(--text-main);
-    margin: 15px 0 5px;
+    margin: 10px 0 5px;
     letter-spacing: -2px;
 }
 
@@ -112,32 +120,28 @@ body {
 .btn-group {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 30px;
+    gap: 12px;
+    margin-top: auto; /* Memaksa tombol ke bawah card jika isi card berbeda tinggi */
+    padding-top: 25px;
 }
 
 .btn-modern {
     text-decoration: none;
-    color: white;
+    color: white !important;
     font-weight: 700;
-    padding: 20px !important;
-    border-radius: 18px;
+    padding: 16px !important;
+    border-radius: 16px;
     text-align: center;
     transition: all 0.3s ease;
     display: block;
-}
-
-.btn-modern:hover {
-    filter: brightness(1.1);
-    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
 }
 
 .btn-outline {
     text-decoration: none;
     color: var(--text-muted);
     font-weight: 600;
-    padding: 18px;
-    border-radius: 18px;
+    padding: 16px;
+    border-radius: 16px;
     border: 2px solid #e2e8f0;
     text-align: center;
     transition: all 0.3s ease;
@@ -149,76 +153,70 @@ body {
     color: var(--primary-blue);
 }
 
-/* Emoji/Icon Container */
-.icon-box {
-    width: 60px;
-    height: 60px;
-    background: white;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .welcome-text h2 { font-size: 2rem; }
-    .glass-card { padding: 30px !important; }
-}
-
-
-/* untuk admin air */
-:root {
-    --primary: #4f8cf0; /* Warna biru utama */
-    --primary-light: rgba(79, 140, 240, 0.1);
-    --text-muted: #64748b;
-    --glass: rgba(255, 255, 255, 0.7);
-}
-
-/* Tombol Kembali */
+/* Tombol Kembali (Untuk halaman admin_air / detail) */
 .btn-back-link {
     text-decoration: none;
-    color: var(--primary);
+    color: var(--primary-blue);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     display: inline-flex;
     align-items: center;
-    gap: 5px; /* Jarak awal antara panah dan teks */
-    margin-bottom: 15px;
-    padding: 8px 16px;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 10px 18px;
     border-radius: 12px;
     transition: all 0.3s ease;
-    background: var(--primary-light); /* Background tipis agar terlihat seperti tombol */
+    background: var(--primary-light);
 }
 
 .btn-back-link:hover {
-    gap: 10px; /* Efek panah menjauh sedikit saat hover */
-    background: var(--primary); /* Berubah warna solid saat hover */
+    background: var(--primary-blue);
     color: white;
-    transform: translateX(-5px); /* Bergerak ke kiri sedikit */
+    transform: translateX(-5px);
 }
 
-/* Header Section */
-h2 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablet & Mobile */
+@media (max-width: 768px) {
+    .top-nav {
+        padding: 15px 5%;
+    }
+    
+    .dashboard-container {
+        padding-bottom: 30px;
+    }
+
+    .welcome-text {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    /* Card di Mobile */
+    .glass-card {
+        padding: 25px !important;
+        border-radius: 25px;
+    }
+
+    /* Tombol di mobile agar lebih mudah ditekan */
+    .btn-modern, .btn-outline {
+        padding: 14px !important;
+        font-size: 0.9rem;
+    }
 }
 
-/* Card Modern Glassmorphism */
-.glass-card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Dukungan Safari */
-    border-radius: 24px;
-    padding: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+/* Mobile Small */
+@media (max-width: 480px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Paksa satu kolom */
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .btn-logout {
+        padding: 8px 15px;
+        font-size: 0.7rem;
+    }
 }
