@@ -117,7 +117,7 @@ function formatTglIndo($tgl) {
 <div class="container">
     <div class="header-area">
         <div>
-            <a href="admin_dashboard.php" style="text-decoration:none; color:var(--primary); font-weight:700;">← Dashboard</a>
+            <a href="admin_dashboard.php" style="text-decoration:none; color:var(--primary); font-weight:700;">← Kembali</a>
             <h2 style="margin:5px 0 0 0; font-weight:800;">🏠 Kelola Hunian</h2>
         </div>
         <div class="btn-group">

@@ -9,12 +9,15 @@
     --glass: rgba(255, 255, 255, 0.9);
 }
 
+* { box-sizing: border-box; } /* Menjaga ukuran elemen tetap aman */
+
 body {
     background: var(--bg-gradient);
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: var(--text-dark);
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 20px; /* Padding dikurangi untuk layar kecil */
+    margin: 0;
 }
 
 .dashboard-container {
@@ -31,56 +34,68 @@ body {
     gap: 5px;
     margin-bottom: 20px;
     transition: 0.3s;
+    font-size: 0.9rem;
 }
 
 .btn-back-link:hover { gap: 10px; }
 
 .month-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--primary);
     background: var(--primary-soft);
     display: inline-block;
-    padding: 8px 20px;
+    padding: 8px 16px;
     border-radius: 12px;
-    margin: 25px 0 15px 5px;
+    margin: 15px 0 15px 0;
     text-transform: uppercase;
 }
 
 .glass-card {
     background: var(--glass);
     backdrop-filter: blur(10px);
-    border-radius: 24px;
-    padding: 25px;
+    border-radius: 20px;
+    padding: 20px;
     border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.04);
+    overflow-x: auto; /* Penting: agar tabel bisa digeser di HP */
+}
+
+/* Scrollbar halus untuk tabel di mobile */
+.glass-card::-webkit-scrollbar {
+    height: 6px;
+}
+.glass-card::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
 }
 
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    min-width: 600px; /* Mencegah kolom berhimpitan di layar sangat kecil */
 }
 
 th {
     text-align: left;
-    padding: 15px 20px;
+    padding: 12px 15px;
     color: var(--text-muted);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-bottom: 2px solid #f1f5f9;
 }
 
 td {
-    padding: 16px 20px;
+    padding: 14px 15px;
     border-bottom: 1px solid #f1f5f9;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 tr:hover td { background: #f8fafc; }
 
-.no-column { width: 50px; text-align: center; font-weight: 700; color: var(--text-muted); }
+.no-column { width: 40px; text-align: center; font-weight: 700; color: var(--text-muted); }
 .nama-user { font-weight: 700; color: var(--text-dark); display: block; }
 .price-bold { font-weight: 800; color: var(--text-dark); }
 
@@ -88,16 +103,17 @@ tr:hover td { background: #f8fafc; }
 .status-lunas {
     background: var(--success-bg);
     color: var(--success);
-    padding: 6px 12px;
-    border-radius: 10px;
+    padding: 4px 10px;
+    border-radius: 8px;
     font-weight: 800;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+    display: inline-block;
 }
 
 .btn-action {
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-size: 0.8rem;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
     font-weight: 700;
     cursor: pointer;
     border: none;
@@ -106,19 +122,59 @@ tr:hover td { background: #f8fafc; }
     align-items: center;
     gap: 5px;
     text-decoration: none;
+    white-space: nowrap; /* Mencegah teks tombol turun ke bawah */
 }
 
 .btn-edit { background: #e0e7ff; color: #4f8cf0; }
 .btn-edit:hover { background: #4f8cf0; color: white; }
-.btn-delete { background: #fee2e2; color: #ef4444; margin-left: 5px; }
+
+.btn-delete { background: #fee2e2; color: #ef4444; }
 .btn-delete:hover { background: #ef4444; color: white; }
 
 .btn-delete-all {
     background: #1e293b;
     color: white;
-    padding: 12px 20px;
-    border-radius: 14px;
-    font-size: 0.85rem;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    width: auto;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-delete-all:hover { background: #000; transform: translateY(-2px); }
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+
+@media (max-width: 600px) {
+    body { padding: 15px 10px; }
+    
+    .glass-card {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .month-title {
+        font-size: 0.9rem;
+        width: 100%; /* Judul bulan memenuhi layar di HP */
+        text-align: center;
+    }
+
+    /* Membuat header dashboard (tombol kembali & delete all) lebih fleksibel */
+    .header-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    td, th {
+        padding: 10px; /* Padding lebih kecil di HP */
+    }
+
+    .btn-action {
+        padding: 6px 10px;
+    }
+}

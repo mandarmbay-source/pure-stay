@@ -1,13 +1,8 @@
 :root {
-    /* Biru Cerah Jernih (Azure Sky) */
     --primary-blue: #4f8cf0; 
     --light-blue: #f0f7ff;
     --gradient-blue: linear-gradient(135deg, #4f8cf0, #7eb1ff);
-    
-    /* Warna Background */
     --bg-main: #ffffff;
-    
-    /* Text */
     --text-main: #1e293b;
     --text-muted: #64748b;
 }
@@ -28,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    padding: 20px; /* Tambahkan padding di body agar card tidak nempel layar HP */
 }
 
 @keyframes fadeInUp {
@@ -40,39 +35,39 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    padding: 50px 70px; /* Sedikit lebih rapat untuk form pendaftaran */
-    border-radius: 40px;
+    padding: 40px; /* Padding dikurangi agar konten punya ruang */
+    border-radius: 32px; /* Sedikit dikecilkan agar lebih proporsional */
     box-shadow: 0 25px 50px -12px rgba(79, 140, 240, 0.15);
     width: 100%;
-    max-width: 550px;
+    max-width: 500px; /* Ukuran ideal untuk form */
     text-align: center;
     animation: fadeInUp 0.8s ease-out;
 }
 
 h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem; /* Ukuran default lebih masuk akal */
     font-weight: 800;
-    letter-spacing: -1.5px;
-    margin-bottom: 30px;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
     background: var(--gradient-blue);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* --- TOMBOL KEMBALI STYLE --- */
+/* --- TOMBOL KEMBALI --- */
 .btn-back {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     color: var(--primary-blue);
     background: var(--light-blue);
-    padding: 10px 18px;
+    padding: 8px 16px;
     border-radius: 50px;
     text-decoration: none;
     font-size: 0.75rem;
     font-weight: 800;
     transition: 0.3s;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .btn-back:hover {
@@ -81,48 +76,45 @@ h2 {
     transform: translateX(-5px);
 }
 
-/* --- KOLOM INPUT REGISTER --- */
+/* --- INPUT GROUP --- */
 .input-group {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .input-group label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: var(--primary-blue);
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 input, select {
     width: 100%;
-    padding: 16px 22px;
-    border-radius: 18px;
+    padding: 14px 18px; /* Padding input sedikit dikecilkan agar tidak terlalu bongsor */
+    border-radius: 15px;
     border: 2px solid #eef4ff; 
-    background: #f8fbff; /* Rona biru halus */
+    background: #f8fbff;
     font-size: 0.95rem;
     color: var(--text-main);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
 }
 
+/* Menghapus scale(1.02) saat fokus karena sering bikin glitch di HP */
 input:focus, select:focus {
     outline: none;
     background: #ffffff;
     border-color: var(--primary-blue);
-    box-shadow: 0 0 0 4px rgba(79, 140, 240, 0.1), 0 10px 20px -10px rgba(79, 140, 240, 0.3);
-    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(79, 140, 240, 0.1);
 }
 
-/* --- BUTTON REGISTER --- */
 .btn-modern {
-    position: relative;
-    overflow: hidden;
     width: 100%;
-    padding: 18px;
-    margin-top: 15px;
-    border-radius: 18px;
+    padding: 16px;
+    margin-top: 10px;
+    border-radius: 15px;
     border: none;
     font-weight: 800;
     font-size: 1rem;
@@ -130,34 +122,46 @@ input:focus, select:focus {
     background: var(--gradient-blue);
     box-shadow: 0 10px 20px -5px rgba(79, 140, 240, 0.4);
     cursor: pointer;
-    z-index: 1;
-    transition: all 0.4s ease;
-}
-
-.btn-modern::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: 0.5s;
+    transition: all 0.3s ease;
 }
 
 .btn-modern:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 30px -10px rgba(79, 140, 240, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -10px rgba(79, 140, 240, 0.5);
 }
 
-.btn-modern:hover::before {
-    left: 100%;
+/* --- RESPONSIVE (INI KUNCINYA) --- */
+@media (max-width: 500px) {
+    .glass-card {
+        padding: 30px 20px; /* Padding mengecil di HP agar form terlihat lebar */
+        border-radius: 24px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input, select {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
 }
 
-.btn-modern:active {
-    transform: scale(0.98);
+
+.helper-text {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+    padding-left: 10px;
+    font-style: italic;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 480px) {
-    .glass-card { padding: 40px 25px; }
-    h2 { font-size: 1.8rem; }
+/* Gaya saat input salah (Invalid) */
+input:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+input:invalid:not(:placeholder-shown) + .helper-text {
+    color: #ef4444;
 }

@@ -79,14 +79,14 @@ function tampilanStatusJatuhTempo($tanggal_bayar) {
 </head>
 <body>
 <div class="dashboard-container">
-    <a href="admin_dashboard.php" class="btn-back-link">← Kembali ke Dashboard</a>
+    <a href="admin_dashboard.php" class="btn-back-link">← Kembali</a>
     
     <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px;">
         <div>
-            <h2 style="margin: 0; font-weight: 800;">🏠 Riwayat & Monitoring Kos</h2>
-            <p style="color: #64748b; margin-top: 5px;">Masa berlaku sewa otomatis dihitung 30 hari sejak tanggal bayar.</p>
+            <h2 style="margin: 0; font-weight: 800;">🏠 Konfirmasi Kos</h2>
+            <p style="color: #64748b; margin-top: 5px;">Masa berlaku sewa otomatis dihitung 30 hari sejak tanggal bayar.</p><br>
         </div>
-        <button onclick="hapusSemua()" class="btn-action" style="background: #1e293b; color: white; padding: 12px 20px; border-radius: 12px;">🗑️ Kosongkan Riwayat</button>
+        <button onclick="hapusSemua()" class="btn-action" style="background: #1e293b; color: white; padding: 12px 20px; border-radius: 12px;">🗑️ Hapus</button><br>
     </div>
 
     <div class="glass-card">

@@ -1,0 +1,41 @@
+/* Container untuk chips bulan */
+.month-chips-wrapper {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 5px 0 15px 0;
+    scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+}
+
+.month-chips-wrapper::-webkit-scrollbar {
+    display: none; /* Hilangkan scrollbar di Chrome/Safari */
+}
+
+.month-chip {
+    padding: 8px 16px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.month-chip:hover {
+    background: #e2e8f0;
+}
+
+/* Style saat chip dipilih */
+input[type="radio"].month-radio {
+    display: none;
+}
+
+input[type="radio"].month-radio:checked + .month-chip {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(79, 140, 240, 0.3);
+}

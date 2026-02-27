@@ -44,19 +44,31 @@ if (!in_array($role_target, ['admin', 'user'])) {
         <input type="password" name="password" placeholder="••••••••" required>
     </div>
 
-    <?php if($role_target == 'user'): ?>
-    <div class="input-group">
-        <label>Login Sebagai Tipe:</label>
-        <select name="specific_role" required>
-            <option value="" disabled selected>-- Pilih Tipe Akun Anda --</option>
-            <option value="user_air">Pelanggan Air</option>
-            <option value="user_kos">Penghuni Kos</option>
-        </select>
-        <small class="helper-text">
-            *Pilihan harus sesuai dengan saat Anda mendaftar.
-        </small>
-    </div>
-    <?php endif; ?>
+ <?php if($role_target == 'user'): ?>
+<div class="input-group">
+    <label>Tipe Layanan</label>
+    <details class="custom-accordion">
+        <summary class="accordion-header">
+            <span id="selected-label">Pilih Layanan Anda</span>
+            <div class="chevron"></div>
+        </summary>
+        
+        <div class="accordion-content">
+            <div class="option-btn" onclick="selectRole('user_air', '💧 Pembeli Air', this)"><br>
+                <span class="icon">💧</span>
+                <span class="text">Pembeli Air</span>
+                <input type="radio" name="specific_role" id="role_air" value="user_air" style="display:none;" required>
+            </div>
+
+            <div class="option-btn" onclick="selectRole('user_kos', '🏠 Penghuni Kos', this)"><br>
+                <span class="icon">🏠</span>
+                <span class="text">Penghuni Kos</span>
+                <input type="radio" name="specific_role" id="role_kos" value="user_kos" style="display:none;" required>
+            </div>
+        </div>
+    </details>
+</div>
+<?php endif; ?>
 
     <button type="submit" class="btn-modern btn-primary">
         LOGIN <?php echo strtoupper($role_target); ?>
@@ -77,7 +89,25 @@ if (!in_array($role_target, ['admin', 'user'])) {
               <a href="index.php" class="btn-back">⬅ KEMBALI KE BERANDA</a><br>
         </div>
     </div>
+    <script>
+function selectRole(val, label, element) {
+    // 1. Ubah teks di header accordion
+    document.getElementById('selected-label').innerHTML = label;
     
+    // 2. Cari input radio di dalam div yang diklik, lalu centang
+    const radio = element.querySelector('input[type="radio"]');
+    radio.checked = true;
+    
+    // 3. Tambahkan warna biru (active) pada pilihan yang diklik
+    document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
+    element.classList.add('active');
+    
+    // 4. Tutup "laci" otomatis setelah 200ms agar terasa smooth
+    setTimeout(() => {
+        document.querySelector('.custom-accordion').removeAttribute('open');
+    }, 200);
+}
+</script>
 </body>
 
 </html>
