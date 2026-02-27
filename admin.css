@@ -153,29 +153,6 @@ body {
     color: var(--primary-blue);
 }
 
-/* Tombol Kembali (Untuk halaman admin_air / detail) */
-.btn-back-link {
-    text-decoration: none;
-    color: var(--primary-blue);
-    font-weight: 700;
-    font-size: 0.85rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-    padding: 10px 18px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background: var(--primary-light);
-}
-
-.btn-back-link:hover {
-    background: var(--primary-blue);
-    color: white;
-    transform: translateX(-5px);
-}
-
-/* --- RESPONSIVE BREAKPOINTS --- */
 
 /* Tablet & Mobile */
 @media (max-width: 768px) {

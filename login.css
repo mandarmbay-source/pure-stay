@@ -1,17 +1,11 @@
 :root {
-    /* Biru Cerah Jernih (Azure Sky) */
     --primary-blue: #4f8cf0; 
-    --light-blue: #f0f7ff;
     --gradient-blue: linear-gradient(135deg, #4f8cf0, #7eb1ff);
-    
-    /* Warna Background yang lebih 'Cerah' */
-    --bg-main: #ffffff;
-    
-    /* Text */
     --text-main: #1e293b;
     --text-muted: #64748b;
 }
 
+/* WAJIB: Agar input tidak bocor keluar container */
 * {
     margin: 0;
     padding: 0;
@@ -20,42 +14,32 @@
 }
 
 body {
-    background: var(--bg-main);
-    /* Background lebih cerah dengan gradasi halus */
+    background: #ffffff;
     background-image: 
-        radial-gradient(at 0% 0%, rgba(79, 140, 240, 0.12) 0px, transparent 40%),
-        radial-gradient(at 100% 100%, rgba(126, 177, 255, 0.1) 0px, transparent 40%);
+        radial-gradient(at 0% 0%, rgba(79, 140, 240, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(126, 177, 255, 0.1) 0px, transparent 50%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
-}
-
-/* --- ANIMASI HALUS SAAT MASUK --- */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    padding: 20px;
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    padding: 60px 80px;
-    border-radius: 40px;
-    /* Shadow lebih menyebar agar terlihat 'ringan' */
+    padding: 40px 30px; /* Padding disesuaikan */
+    border-radius: 30px;
     box-shadow: 0 25px 50px -12px rgba(79, 140, 240, 0.15);
     width: 100%;
-    max-width: 600px;
+    max-width: 400px; /* Ukuran kontainer diperkecil agar tidak melar */
     text-align: center;
-    animation: fadeInUp 0.8s ease-out;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    letter-spacing: -1.5px;
     margin-bottom: 10px;
     background: var(--gradient-blue);
     -webkit-background-clip: text;
@@ -64,115 +48,88 @@ h2 {
 
 .subtitle {
     color: var(--text-muted);
-    font-weight: 500;
-    margin-bottom: 40px;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
 }
 
-/* --- KOLOM INPUT YANG TIDAK POLOS --- */
 .input-group {
     text-align: left;
-    margin-bottom: 25px;
-    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .input-group label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
     margin-bottom: 8px;
-    color: var(--primary-blue); /* Label berwarna biru agar cerah */
-    padding-left: 10px;
+    color: var(--primary-blue);
+    padding-left: 5px;
 }
 
+/* Menyamakan Input dan Select */
 input, select {
     width: 100%;
-    padding: 18px 25px;
-    border-radius: 20px;
-    /* Border awal yang soft biru */
+    padding: 15px 20px;
+    border-radius: 15px;
     border: 2px solid #eef4ff; 
-    background: #f8fbff; /* Ada sedikit rona biru di kolomnya */
-    font-size: 1rem;
+    background: #f8fbff;
+    font-size: 0.95rem;
     color: var(--text-main);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
+    outline: none;
+    display: block;
+}
+
+/* Desain Dropdown agar Modern (Menghilangkan kotak abu-abu browser) */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234f8cf0' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+    cursor: pointer;
 }
 
 input:focus, select:focus {
-    outline: none;
-    background: #ffffff;
     border-color: var(--primary-blue);
-    /* Efek Glow saat diklik */
-    box-shadow: 0 0 0 4px rgba(79, 140, 240, 0.1), 0 10px 20px -10px rgba(79, 140, 240, 0.3);
-    transform: scale(1.02); /* Sedikit membesar saat diklik agar interaktif */
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(79, 140, 240, 0.1);
 }
 
-/* Memberikan warna berbeda untuk tiap baris input secara halus */
-.input-group:nth-child(even) input {
-    background: #fdfefe; /* Variasi warna tipis */
+.helper-text {
+    display: block;
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 8px;
+    padding-left: 5px;
 }
 
-/* --- TOMBOL MODERN DENGAN GRADASI --- */
 .btn-modern {
-    position: relative;
-    overflow: hidden;
     width: 100%;
-    padding: 20px;
-    margin-top: 15px;
-    border-radius: 20px;
+    padding: 16px;
+    border-radius: 15px;
     border: none;
+    background: var(--gradient-blue);
+    color: white;
     font-weight: 800;
     font-size: 1rem;
-    color: #ffffff;
-    background: var(--gradient-blue); /* Tombol langsung cerah */
-    box-shadow: 0 10px 20px -5px rgba(79, 140, 240, 0.4);
     cursor: pointer;
-    z-index: 1;
-    transition: all 0.4s ease;
-}
-
-/* Efek Cahaya Mengalir (Shine Effect) */
-.btn-modern::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: 0.5s;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px -5px rgba(79, 140, 240, 0.4);
 }
 
 .btn-modern:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 30px -10px rgba(79, 140, 240, 0.5);
-}
-
-.btn-modern:hover::before {
-    left: 100%;
-}
-
-.btn-modern:active {
-    transform: scale(0.98);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -10px rgba(79, 140, 240, 0.5);
 }
 
 .btn-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--primary-blue);
-    background: var(--light-blue);
-    padding: 10px 20px;
-    border-radius: 50px;
+    display: inline-block;
+    margin-top: 25px;
     text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 800;
-    transition: 0.3s;
-    margin-bottom: 20px;
-}
-
-.btn-back:hover {
-    background: var(--primary-blue);
-    color: #ffffff;
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 480px) {
-    .glass-card { padding: 40px 25px; }
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
 }

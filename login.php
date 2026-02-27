@@ -31,37 +31,37 @@ if (!in_array($role_target, ['admin', 'user'])) {
             <h2 style="margin-top: 20px;">Masuk sebagai <?php echo $role_target == 'admin' ? 'Admin' : 'User'; ?></h2>
             <p class="subtitle">Silakan masukkan akun Anda</p>
 
-            <form action="login_proses.php" method="POST">
-                <input type="hidden" name="login_type" value="<?php echo $role_target; ?>"> 
-                
-                <div class="input-group">
-                    <label>Username <?php echo ucfirst($role_target); ?></label>
-                    <input type="text" name="username" placeholder="Masukkan Username..." required>
-                </div>
-                
-                <div class="input-group">
-                    <label>Password <?php echo ucfirst($role_target); ?></label>
-                    <input type="password" name="password" placeholder="••••••••" required>
-                </div>
+          <form action="login_proses.php" method="POST">
+    <input type="hidden" name="login_type" value="<?php echo $role_target; ?>"> 
+    
+    <div class="input-group">
+        <label>Username <?php echo ucfirst($role_target); ?></label>
+        <input type="text" name="username" placeholder="Masukkan Username..." required>
+    </div>
+    
+    <div class="input-group">
+        <label>Password <?php echo ucfirst($role_target); ?></label>
+        <input type="password" name="password" placeholder="••••••••" required>
+    </div>
 
-               <?php if($role_target == 'user'): ?>
-<div class="input-group">
-    <label>Login Sebagai Tipe:</label>
-    <select name="specific_role" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
-        <option value="" disabled selected>-- Pilih Tipe Akun Anda --</option>
-        <option value="user_air">Pelanggan Air</option>
-        <option value="user_kos">Penghuni Kos</option>
-    </select><br>
-    <small style="color: #94a3b8; font-size: 11px; display: block; margin-top: 5px;"><br>
-        *Pilihan harus sesuai dengan saat Anda mendaftar.
-    </small>
-</div>
-<?php endif; ?>
+    <?php if($role_target == 'user'): ?>
+    <div class="input-group">
+        <label>Login Sebagai Tipe:</label>
+        <select name="specific_role" required>
+            <option value="" disabled selected>-- Pilih Tipe Akun Anda --</option>
+            <option value="user_air">Pelanggan Air</option>
+            <option value="user_kos">Penghuni Kos</option>
+        </select>
+        <small class="helper-text">
+            *Pilihan harus sesuai dengan saat Anda mendaftar.
+        </small>
+    </div>
+    <?php endif; ?>
 
-                <button type="submit" class="btn-modern btn-primary">
-                    LOGIN <?php echo strtoupper($role_target); ?>
-                </button>
-            </form>
+    <button type="submit" class="btn-modern btn-primary">
+        LOGIN <?php echo strtoupper($role_target); ?>
+    </button>
+</form>
 
             <div style="margin-top: 25px;">
                 <?php if($role_target == 'user'): ?>
